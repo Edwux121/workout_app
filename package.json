@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "pg": "^8.13.1"
+  },
+  "name": "workout_app",
+  "version": "1.0.0",
+  "description": "Workout App",
+  "main": "js/db.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Edvinas",
+  "license": "ISC"
+}
