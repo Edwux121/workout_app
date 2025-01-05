@@ -5,3 +5,29 @@
 .navbar {
     background-color: rgba(0, 0, 0, 0.3);
 }
+
+#details-button {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+#detail s-button:hover {
+    background-color: #cacaca;
+}
+
+#details-button:active {
+    background-color: #a8a8a8;
+}
+
+#exerciseName {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#exercisesContainer {
+    margin-top: 20px;
+}
+
+#exercisesContainer .row {
+    margin-top: 10px;
+}
