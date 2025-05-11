@@ -24,14 +24,15 @@ This document provides essential information for developers working on the Worko
    ```sql
    CREATE TABLE exercises (
      id SERIAL PRIMARY KEY,
-     name VARCHAR(255) NOT NULL,
+     name VARCHAR(50),
      description TEXT,
-     category VARCHAR(100)
+     type VARCHAR(20)
    );
 
    CREATE TABLE workouts (
      id SERIAL PRIMARY KEY,
-     name VARCHAR(255) NOT NULL
+     name VARCHAR(50),
+     exercises TEXT
    );
    ```
 4. Import exercise data using the script in `database/script.js`:
