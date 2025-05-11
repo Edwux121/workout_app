@@ -1,8 +1,8 @@
 const exercisesList = document.querySelector("#exercises-list");
 
-async function fetchExercises() {
+async function fetchExercises(tableName = "exercises") {
     try {
-        const response = await fetch("http://localhost:3000/exercises");
+        const response = await fetch(`http://localhost:3000/workoutapp?tableName=${encodeURIComponent(tableName)}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -18,7 +18,7 @@ function displayExercises(exercises) {
 
     exercises.forEach(exercise => {
         const exerciseItem = document.createElement("div");
-        exerciseItem.classList.add("d-flex", "justify-content-between", "align-items-center", "list-group-item");
+        exerciseItem.classList.add("d-flex", "justify-content-between", "align-items-center", "list-group-item", "exercise-item-bg");
 
         const exerciseName = document.createElement("span");
         exerciseName.textContent = exercise.name;
