@@ -25,3 +25,24 @@ export const fetchData = async (tableName) => {
         client.release();
     }
 };
+
+export const fetchExercisesWithCategories = async () => {
+    try {
+        const client = await pool.connect();
+        const query = `
+          SELECT e.id, e.name, e.description, e.category_id, c.exercise_type
+          FROM exercises e
+          LEFT JOIN (
+            SELECT ROW_NUMBER() OVER() as id, exercise_type
+            FROM exercises_categories
+          ) c ON e.category_id::integer = c.id
+        `;
+        const result = await client.query(query);
+        client.release();
+        return result.rows;
+    } catch (error) {
+        console.error('Error fetching exercises with categories:', error);
+        throw error;
+    }
+};
+

@@ -19,6 +19,18 @@ app.get("/workoutapp", async (req, res) => {
     }
 });
 
+app.get("/workoutapp/exercises-with-categories", async (req, res) => {
+    try {
+        const { fetchExercisesWithCategories } = await import('./db.js');
+        const data = await fetchExercisesWithCategories();
+        res.json(data);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server Error");
+    }
+});
+
+
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}/`);

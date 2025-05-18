@@ -12,6 +12,8 @@ const pool = new Pool({
     port: 5432,
 });
 
+//TODO: Update script according to DB changes done by hand (new tables for exercises and logs)
+
 const importJsonFiles = async (directory) => {
     const client = await pool.connect();
     try {
