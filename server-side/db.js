@@ -30,12 +30,9 @@ export const fetchExercisesWithCategories = async () => {
     try {
         const client = await pool.connect();
         const query = `
-          SELECT e.id, e.name, e.description, e.category_id, c.exercise_type
+          SELECT e.id, e.name, e.description, e.category_id, c.id, c.exercise_type
           FROM exercises e
-          LEFT JOIN (
-            SELECT ROW_NUMBER() OVER() as id, exercise_type
-            FROM exercises_categories
-          ) c ON e.category_id::integer = c.id
+          LEFT JOIN exercises_categories c ON e.category_id = c.id
         `;
         const result = await client.query(query);
         client.release();
