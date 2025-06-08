@@ -1,0 +1,130 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar container */
+#navbar {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 50%, #1a202c 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #48bb78;
+}
+
+/* Inner navbar wrapper */
+#navbar > div {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    background-color: transparent;
+}
+
+/* Brand/Logo */
+#navbar-main {
+    color: #48bb78;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#navbar-main:hover {
+    color: #68d391;
+    transform: scale(1.05);
+}
+
+/* Navigation content */
+#navbarSupportedContent ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+/* Navigation items */
+.nav-item {
+    position: relative;
+}
+
+/* Navigation links */
+.nav-link {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.nav-link:hover {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
+    border-color: #68d391;
+}
+
+.nav-link.active {
+    background: linear-gradient(135deg, #38a169, #2f855a);
+    color: white;
+    box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+    border-color: #48bb78;
+}
+
+.nav-link.active:hover {
+    background: linear-gradient(135deg, #48bb78, #68d391);
+    box-shadow: 0 6px 25px rgba(72, 187, 120, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #navbar > div {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 20px;
+    }
+
+    #navbarSupportedContent {
+        margin-top: 15px;
+    }
+
+    #navbarSupportedContent ul {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #navbar > div {
+        padding: 15px;
+    }
+
+    #navbar-main {
+        font-size: 1.3rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
+}
