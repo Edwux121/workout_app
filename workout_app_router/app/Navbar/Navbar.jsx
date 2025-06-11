@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import './Navbar.css';
 
 function Navbar(props) {
@@ -10,11 +11,10 @@ function Navbar(props) {
                     <div id="navbarSupportedContent">
                         <ul>
                             <li className="nav-item">
-                                <a className="nav-link active" href={props.exercisesLink}>Exercises</a>
+                                <Link className="nav-link active" to="/exercises">Exercises</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link active" href={props.workoutsLink}>Workout
-                                    Routines</a>
+                                <Link className="nav-link active" to="/workouts">Workouts</Link>
                             </li>
                         </ul>
                     </div>
