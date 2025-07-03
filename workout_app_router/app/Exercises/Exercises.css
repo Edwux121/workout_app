@@ -1,0 +1,28 @@
+#exercises {
+    background-color: #f8f9fa;
+}
+
+ul li button {
+    margin: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.modal {
+    background-color: #f8f9fa;
+    border: 1px solid;
+    border-radius: 10px;
+    max-width: 80%;
+    align-self: center;
+    margin: auto;
+    align-items: center;
+}
+
+.modal .content {
+    margin: 20px;
+}
+
+ul li .modal div button {
+    margin: 10px;
+}
