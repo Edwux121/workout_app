@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
+  },
+  "name": "workout_app",
+  "version": "1.0.0",
+  "description": "Workout App",
+  "main": "server-side/server.js",
+  "scripts": {
+    "start": "node server-side/server.js"
+  },
+  "author": "Edvinas",
+  "license": "ISC",
+  "type": "module"
+}
