@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import './Exercises.css';
 import ReactPaginate from "react-paginate";
 
-function Exercises({ itemsPerPage = 10 }) { // Default to 10 items per page
+function Exercises({ itemsPerPage = 20 }) { // Default to 20 items per page
     const [originalData, setOriginalData] = useState([]);
     const [currentData, setCurrentData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -100,7 +100,7 @@ function Exercises({ itemsPerPage = 10 }) { // Default to 10 items per page
                                                     <div>
                                                         <button onClick=
                                                                     {() => close()}>
-                                                            Close modal
+                                                            Close
                                                         </button>
                                                     </div>
                                                 </div>
