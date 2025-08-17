@@ -42,4 +42,3 @@ export const fetchExercisesWithCategories = async () => {
         throw error;
     }
 };
-

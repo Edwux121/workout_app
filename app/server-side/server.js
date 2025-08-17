@@ -7,10 +7,10 @@ const port = 3000;
 
 app.use(cors());
 
-app.get("/workoutapp", async (req, res) => {
-    const tableName = req.query.tableName;
+app.get("/workoutapp/exercises-with-categories", async (req, res) => {
     try {
-        const data = await fetchData(tableName);
+        const { fetchExercisesWithCategories } = await import('./db.js');
+        const data = await fetchExercisesWithCategories();
         res.json(data);
     } catch (err) {
         console.error(err);
@@ -18,10 +18,10 @@ app.get("/workoutapp", async (req, res) => {
     }
 });
 
-app.get("/workoutapp/exercises-with-categories", async (req, res) => {
+app.get("/workoutapp/workouts", async (req, res) => {
     try {
-        const { fetchExercisesWithCategories } = await import('./db.js');
-        const data = await fetchExercisesWithCategories();
+        const { fetchData } = await import('./db.js');
+        const data = await fetchData("workouts");
         res.json(data);
     } catch (err) {
         console.error(err);
