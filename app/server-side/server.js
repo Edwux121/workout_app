@@ -38,10 +38,7 @@ app.get("/workoutapp/workouts/:id", async (req, res) => {
         const workoutData = await fetchWorkoutDataWithId("workout_junction", [parseInt(req.params.id)]);
         console.log('Workout junction data:', workoutData);
 
-        // Parse the comma-separated string into an array of integers
-        const exerciseIds = workoutData[0].exercises_id
-            .split(',')
-            .map(id => parseInt(id.trim()));
+        const exerciseIds = workoutData.map(entry => entry.exercises_id);
         console.log('Exercise IDs:', exerciseIds);
 
         const exerciseData = await fetchDataWithId("exercises", exerciseIds);
