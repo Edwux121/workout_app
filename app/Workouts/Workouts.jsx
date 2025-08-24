@@ -1,8 +1,8 @@
 import React from 'react';
-import Popup from "reactjs-popup";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import "./Workouts.css"
+import {Link} from "react-router";
 
 function Workouts( {itemsPerPage = 20}) {
     const [originalData, setOriginalData] = useState([]);
@@ -17,7 +17,6 @@ function Workouts( {itemsPerPage = 20}) {
     useEffect(() => {
         const fetchDataForPosts = async () => {
             try {
-                console.log("Fetching workouts..."); // Debug log
                 const response = await fetch(
                     `http://localhost:3000/workoutapp/workouts`
                 );
@@ -44,14 +43,12 @@ function Workouts( {itemsPerPage = 20}) {
             const slicedData = originalData.slice(itemOffset, endOffset);
             setCurrentData(slicedData);
             setPageCount(Math.ceil(originalData.length / itemsPerPage));
-            console.log(`Current page offset: ${itemOffset}, end offset: ${endOffset}`);
         }
     }, [itemOffset, itemsPerPage, originalData]);
 
     // Handle page click
     const handlePageClick = (event) => {
         const newOffset = event.selected * itemsPerPage;
-        console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
         setItemOffset(newOffset);
     };
 
@@ -86,26 +83,7 @@ function Workouts( {itemsPerPage = 20}) {
                             {/*Combine workout.id with index of the page for unique key and display it*/}
                             {currentData.map((workout, index) => (
                                 <li key={`${workout.id}-${itemOffset + index}`}>
-                                    <Popup trigger=
-                                               {<button> {workout.name} </button>}
-                                           modal nested>
-                                        {
-                                            close => (
-                                                <div className='modal'>
-                                                    <div className='content'>
-                                                        <h3>{workout.name}</h3>
-                                                        <p>Tempajkhsndkjahsdkjahsdkjahsdkjahsdkjahsdkjashdkajshgdiuaywgdikuashgdkjahsdkjah</p>
-                                                    </div>
-                                                    <div>
-                                                        <button onClick=
-                                                                    {() => close()}>
-                                                            Close
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            )
-                                        }
-                                    </Popup>
+                                    <Link to={`/workouts/${workout.id}`}>{workout.name}</Link>
                                     <hr/>
                                 </li>
                             ))}

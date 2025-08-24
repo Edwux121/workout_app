@@ -11,7 +11,7 @@ const pool = new Pool({
     port: 5432,
 });
 
-const allowedTables = ['exercises', 'workouts'];
+const allowedTables = ['exercises', 'workouts', 'workout_junction'];
 
 export const fetchData = async (tableName) => {
     if (!allowedTables.includes(tableName)) {
@@ -20,6 +20,33 @@ export const fetchData = async (tableName) => {
     const client = await pool.connect();
     try {
         const res = await client.query(`SELECT * FROM ${tableName}`);
+        return res.rows;
+    } finally {
+        client.release();
+    }
+};
+
+export const fetchDataWithId = async (tableName, ids) => {
+    if (!allowedTables.includes(tableName)) {
+        throw new Error('Table not allowed');
+    }
+    const client = await pool.connect();
+    try {
+        const res = await client.query(`SELECT * FROM ${tableName} WHERE id = ANY($1::int[])`, [ids]);
+        return res.rows;
+    } finally {
+        client.release();
+    }
+};
+
+
+export const fetchWorkoutDataWithId = async (tableName, workoutIds) => {
+    if (!allowedTables.includes(tableName)) {
+        throw new Error('Table not allowed');
+    }
+    const client = await pool.connect();
+    try {
+        const res = await client.query(`SELECT * FROM ${tableName} WHERE workout_id = ANY($1::int[])`, [workoutIds]);
         return res.rows;
     } finally {
         client.release();
