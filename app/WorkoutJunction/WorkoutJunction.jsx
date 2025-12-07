@@ -15,7 +15,6 @@ function WorkoutJunction() {
                     throw new Error(`HTTP error: Status ${response.status}`);
                 }
                 const workoutData = await response.json();
-                console.log('Received workout data:', workoutData);
                 setWorkout(workoutData);
                 setError(null);
             } catch (err) {
@@ -59,12 +58,17 @@ function WorkoutJunction() {
     }
 
     return (
+        console.log(workout),
         <div>
             <h1>Exercises</h1>
             <ul>
                 {workout.map((exercise) => (
                     <li key={exercise.id}>
-                        <p>{exercise.name}</p>
+                        <p>{exercise.name}</p><br/>
+                        <label htmlFor="reps">Reps:</label><br/>
+                        <input type="number" id="reps" name="reps"/><br/>
+                        <label htmlFor="weight">Weight:</label><br/>
+                        <input type="number" id="weight" name="weight"/>
                     </li>
                 ))}
             </ul>

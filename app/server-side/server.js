@@ -33,16 +33,9 @@ app.get("/workoutapp/workouts/:id", async (req, res) => {
     try {
         const { fetchWorkoutDataWithId } = await import('./db.js');
         const { fetchDataWithId } = await import('./db.js');
-
-        console.log('Received workout ID:', req.params.id);
         const workoutData = await fetchWorkoutDataWithId("workout_junction", [parseInt(req.params.id)]);
-        console.log('Workout junction data:', workoutData);
-
         const exerciseIds = workoutData.map(entry => entry.exercises_id);
-        console.log('Exercise IDs:', exerciseIds);
-
         const exerciseData = await fetchDataWithId("exercises", exerciseIds);
-        console.log('Exercise data:', exerciseData);
 
         res.json(exerciseData);
     } catch (err) {
